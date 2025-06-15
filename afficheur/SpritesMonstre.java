@@ -13,7 +13,7 @@ package afficheur;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-import java.io.File;
+import java.io.InputStream;
 import java.io.IOException;
 import java.util.HashMap;
 
@@ -35,10 +35,15 @@ public class SpritesMonstre extends Sprites {
      *
      * @throws IOException
      */
-	public SpritesMonstre() throws IOException
-	{
-		im=ImageIO.read(new File(imageFile));
-		activite="fixe";
+        public SpritesMonstre() throws IOException
+        {
+                try (InputStream is = getClass().getClassLoader().getResourceAsStream(imageFile)) {
+                        if (is == null) {
+                                throw new IOException("Resource not found: " + imageFile);
+                        }
+                        im = ImageIO.read(is);
+                }
+                activite="fixe";
 		
 		sprites=new HashMap<String, Sprite>();
 		

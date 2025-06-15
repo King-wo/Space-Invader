@@ -21,3 +21,17 @@ git clone https://gitlab.univ-lorraine.fr/villard5/moteurdejeu.git
 | Projet | Video |
 | :------------------: | :-------------------: |
 | Space invader  | ![](invader.mp4) |
+
+## Build
+
+Compile the sources and package the game engine along with the images in
+`resources/` into a JAR:
+
+```bash
+mkdir -p build/classes
+javac -d build/classes $(find . -name '*.java')
+jar cf moteurDeJeu.jar -C build/classes . -C resources .
+```
+
+The `-C resources .` part ensures `hero.png`, `monstre.png` and the
+background image are included on the classpath.
