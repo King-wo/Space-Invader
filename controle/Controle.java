@@ -47,4 +47,9 @@ public class Controle {
      *
      */
       public boolean enAir;
+
+    /**
+     * indique si le joueur appuie sur la touche de tir
+     */
+      public boolean tir;
 }
