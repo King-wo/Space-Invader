@@ -49,7 +49,17 @@ public class Monde {
     /**
      * les monstres
      */
-	public ArrayList<ObjetMonstre> monstres=new ArrayList<ObjetMonstre>();
+        public ArrayList<ObjetMonstre> monstres=new ArrayList<ObjetMonstre>();
+
+        /**
+         * missiles tires par le heros
+         */
+        public ArrayList<ObjetMissile> missilesHeros = new ArrayList<ObjetMissile>();
+
+        /**
+         * missiles tires par les monstres
+         */
+        public ArrayList<ObjetMissile> missilesAliens = new ArrayList<ObjetMissile>();
 	
 
         public int nbHeros=0;
@@ -130,8 +140,18 @@ public class Monde {
             heros.get(nbHeros).px=px;
             heros.get(nbHeros).py=py;
             heros.get(nbHeros).index=nbHeros;
-            
+
             nbHeros++;
+        }
+
+        /** ajouter un missile du heros */
+        public void addMissileHero(double px, double py, double vx, double vy){
+            missilesHeros.add(new ObjetMissile(px, py, vx, vy));
+        }
+
+        /** ajouter un missile alien */
+        public void addMissileAlien(double px, double py, double vx, double vy){
+            missilesAliens.add(new ObjetMissile(px, py, vx, vy));
         }
 }
 
