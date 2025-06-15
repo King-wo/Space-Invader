@@ -39,6 +39,11 @@ public class MoteurPhysique {
         
         public int current_monster_index=0;
         public int current_wall_index=0;
+
+        /**
+         * indique si un tir est deja en cours pour eviter les rafales
+         */
+        private boolean tirEnCours = false;
     /**
      * Construit un moteur par defaut
      * @throws IOException
@@ -147,7 +152,17 @@ public class MoteurPhysique {
 		
 
 		// mise a jour de la balle
-		monde.balle.update();
+                monde.balle.update();
+
+                // creation d'un missile sur pression de la touche espace
+                if (monde.c.tir && !tirEnCours) {
+                    monde.addMissileHero(monde.balle.px, monde.balle.py,
+                                        monde.balle.vx, monde.balle.vy);
+                    tirEnCours = true;
+                }
+                if (!monde.c.tir) {
+                    tirEnCours = false;
+                }
 
 		// test de collision pour chaque mur
 		for (Objet obj : monde.objets) {
@@ -195,9 +210,9 @@ public class MoteurPhysique {
                    monde.balle.collision=Collision.typeOfCollision;
 
                 // mise a jour des missiles du heros
-                java.util.Iterator<ObjetMissile> it = monde.missilesHeros.iterator();
-                while(it.hasNext()){
-                    ObjetMissile m = it.next();
+                java.util.Iterator<ObjetMissile> itM = monde.missilesHeros.iterator();
+                while(itM.hasNext()){
+                    ObjetMissile m = itM.next();
                     m.update();
                     boolean remove = false;
                     for(Objet obj : monde.objets){
@@ -214,7 +229,7 @@ public class MoteurPhysique {
                             }
                         }
                     }
-                    if(remove) it.remove();
+                    if(remove) itM.remove();
                 }
 
                 // mise a jour des missiles aliens
