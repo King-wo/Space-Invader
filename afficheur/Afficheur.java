@@ -85,11 +85,15 @@ public class Afficheur extends JPanel {
 			obj.draw(g);
 		}
 		
-		//affiche les monstres
-		for (ObjetMonstre monstre : m.monstres)
-		{
-			monstre.draw(g);
-		}
+                //affiche les monstres
+                for (ObjetMonstre monstre : m.monstres)
+                {
+                        monstre.draw(g);
+                }
+
+                for (ObjetTir tir : m.tirs) {
+                        tir.draw(g);
+                }
 
 		// affiche la balle
 		ObjetHeros b = m.balle;

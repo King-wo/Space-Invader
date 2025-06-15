@@ -41,10 +41,15 @@ public class Controle {
     /**
      *
      */
-     public boolean bas;
+        public boolean bas;
+
+    /**
+     *
+     */
+    public boolean tir;
     
     /**
      *
      */
-      public boolean enAir;
+        public boolean enAir;
 }

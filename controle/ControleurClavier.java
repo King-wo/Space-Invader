@@ -78,15 +78,20 @@ public class ControleurClavier implements KeyListener{
 			c.haut=true;
 		}
 		//touche down
-		if (e.getKeyCode()==KeyEvent.VK_DOWN)
-		{
-			c.bas=true;
-		}		
-		//touche up
-		if (e.getKeyCode()==KeyEvent.VK_Q)
-		{
-			fin=true;
-		}
+                if (e.getKeyCode()==KeyEvent.VK_DOWN)
+                {
+                        c.bas=true;
+                }
+                //touche espace
+                if (e.getKeyCode()==KeyEvent.VK_SPACE)
+                {
+                        c.tir=true;
+                }
+                //touche up
+                if (e.getKeyCode()==KeyEvent.VK_Q)
+                {
+                        fin=true;
+                }
 		
 		if (affiche) afficheur.dessin();
 	}
@@ -109,13 +114,17 @@ public class ControleurClavier implements KeyListener{
 			c.haut=false;
 		}
                 //touche down
-		if (e.getKeyCode()==KeyEvent.VK_DOWN)
-		{
-			c.bas=false;
-		}
-		if (affiche) afficheur.dessin();
-		
-	}
+                if (e.getKeyCode()==KeyEvent.VK_DOWN)
+                {
+                        c.bas=false;
+                }
+                if (e.getKeyCode()==KeyEvent.VK_SPACE)
+                {
+                        c.tir=false;
+                }
+                if (affiche) afficheur.dessin();
+
+        }
 	
 	
 

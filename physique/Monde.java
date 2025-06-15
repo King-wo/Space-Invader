@@ -14,6 +14,8 @@ package physique;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import physique.ObjetTir;
+
 import afficheur.Repere;
 import controle.Controle;
 
@@ -49,7 +51,10 @@ public class Monde {
     /**
      * les monstres
      */
-	public ArrayList<ObjetMonstre> monstres=new ArrayList<ObjetMonstre>();
+        public ArrayList<ObjetMonstre> monstres=new ArrayList<ObjetMonstre>();
+
+        /** liste des tirs */
+        public ArrayList<ObjetTir> tirs = new ArrayList<ObjetTir>();
 	
 
         public int nbHeros=0;
@@ -110,6 +115,10 @@ public class Monde {
             monstres.get(nbMonstres).index=nbMonstres;
             
             nbMonstres++;
+        }
+
+        public void addTir(ObjetTir tir){
+            tirs.add(tir);
         }
         
         public void addObjet(Objet monObjet){ 

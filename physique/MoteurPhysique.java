@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import static main.JeuPhysique.*;
 import controle.Controle;
+import physique.ObjetTir;
 
 //permet de g�rer la physique
 
@@ -50,18 +51,24 @@ public class MoteurPhysique {
     /**
      *
      */
-	public void update() {
-            
+        public void update() {
+
                 monde.balle.collision=0;
-		// mise a jour des objets
+                if (monde.c.tir) {
+                    ObjetTir tir = new ObjetTir(monde.balle.px + monde.balle.width/2,
+                                              monde.balle.py + monde.balle.height);
+                    monde.addTir(tir);
+                    monde.c.tir = false;
+                }
+                // mise a jour des objets
 		for (Objet o : monde.objets) {
 			o.update();
 			o.collision=0;
                         		}
 
-		// mise a jour des monstres
-		for (ObjetMonstre monstre : monde.monstres) {
-			monstre.evolue();
+                // mise a jour des monstres
+                for (ObjetMonstre monstre : monde.monstres) {
+                        monstre.evolue();
                         if (Collision.typeOfCollision==MONSTRE)
                         {
                             monde.balle.collision=MONSTRE;  
@@ -130,7 +137,11 @@ public class MoteurPhysique {
                     if (monde.c.bas)
                     {
                         monde.balle.vy = -1;
-                    }                                      
+                    }
+                }
+
+                for (ObjetTir t : monde.tirs) {
+                        t.update();
                 }
 		
 
