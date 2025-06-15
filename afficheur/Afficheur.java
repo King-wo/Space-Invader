@@ -80,10 +80,10 @@ public class Afficheur extends JPanel {
 		//decor.affiche( g);
                 decor.affiche((int)m.balle.px, g);
 
-		// affiche les objets
-		for (Objet obj : m.objets) {
-			obj.draw(g);
-		}
+                // affiche les objets
+                for (Objet obj : m.objets) {
+                        obj.draw(g);
+                }
 		
 		//affiche les monstres
 		for (ObjetMonstre monstre : m.monstres)
@@ -91,11 +91,15 @@ public class Afficheur extends JPanel {
 			monstre.draw(g);
 		}
 
-		// affiche la balle
-		ObjetHeros b = m.balle;
-		b.draw(g);
-		
-		bs.show();
+                // affiche la balle
+                ObjetHeros b = m.balle;
+                b.draw(g);
+
+                g.setColor(Color.white);
+                g.drawString("Score : " + m.score, 10, 20);
+                g.drawString("Vies : " + m.vies, 10, 35);
+
+                bs.show();
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
 		

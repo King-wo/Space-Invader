@@ -13,6 +13,7 @@ package physique;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import static main.JeuPhysique.*;
 import controle.Controle;
 
@@ -59,15 +60,26 @@ public class MoteurPhysique {
 			o.collision=0;
                         		}
 
-		// mise a jour des monstres
-		for (ObjetMonstre monstre : monde.monstres) {
-			monstre.evolue();
+                // mise a jour des monstres
+                Iterator<ObjetMonstre> it = monde.monstres.iterator();
+                while(it.hasNext()) {
+                        ObjetMonstre monstre = it.next();
+                        monstre.evolue();
+
+                        if (Collision.collision(monde.balle, monstre)) {
+                            monde.vies--;
+                            it.remove();
+                            monde.nbMonstres--;
+                            monde.score++;
+                            continue;
+                        }
+
                         if (Collision.typeOfCollision==MONSTRE)
                         {
-                            monde.balle.collision=MONSTRE;  
+                            monde.balle.collision=MONSTRE;
                             current_monster_index=monstre.index;
                         }
-		}
+                }
 
 		// gestion du controleur
 		if (monde.c.gauche)

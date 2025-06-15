@@ -57,10 +57,15 @@ public class Monde {
     /**
      * les heros
      */
-	public ArrayList<ObjetHeros> heros=new ArrayList<ObjetHeros>();
-	
+        public ArrayList<ObjetHeros> heros=new ArrayList<ObjetHeros>();
 
-        public int nbMonstres=0;        
+        /** score du joueur */
+        public int score = 0;
+
+        /** nombre de vies disponibles */
+        public int vies = 3;
+
+        public int nbMonstres=0;
     /**
      *
      * @throws IOException
@@ -74,10 +79,12 @@ public class Monde {
 		//getsion du controleur
 		balle=new ObjetHeros();
 		
-		//gere la vision subjective
-		Repere.h=balle;
-                
-		
+                //gere la vision subjective
+                Repere.h=balle;
+
+                score = 0;
+                vies = 3;
+
 	}
 	
         /** Ajouter un mur
