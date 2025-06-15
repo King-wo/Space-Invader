@@ -194,6 +194,55 @@ public class MoteurPhysique {
                 if (monde.balle.collision==0)
                    monde.balle.collision=Collision.typeOfCollision;
 
+                // mise a jour des missiles du heros
+                java.util.Iterator<ObjetMissile> it = monde.missilesHeros.iterator();
+                while(it.hasNext()){
+                    ObjetMissile m = it.next();
+                    m.update();
+                    boolean remove = false;
+                    for(Objet obj : monde.objets){
+                        if(Collision.collision(m, obj)){
+                            remove = true;
+                            break;
+                        }
+                    }
+                    if(!remove){
+                        for(ObjetMonstre monstre : monde.monstres){
+                            if(Collision.collision(m, monstre)){
+                                remove = true;
+                                break;
+                            }
+                        }
+                    }
+                    if(remove) it.remove();
+                }
+
+                // mise a jour des missiles aliens
+                java.util.Iterator<ObjetMissile> itA = monde.missilesAliens.iterator();
+                while(itA.hasNext()){
+                    ObjetMissile m = itA.next();
+                    m.update();
+                    boolean remove = false;
+                    for(Objet obj : monde.objets){
+                        if(Collision.collision(m, obj)){
+                            remove = true;
+                            break;
+                        }
+                    }
+                    if(!remove){
+                        if(Collision.collision(monde.balle, m)){
+                            remove = true;
+                        }
+                        for(ObjetHeros h : monde.heros){
+                            if(Collision.collision(h, m)){
+                                remove = true;
+                                break;
+                            }
+                        }
+                    }
+                    if(remove) itA.remove();
+                }
+
 	}
 
 }

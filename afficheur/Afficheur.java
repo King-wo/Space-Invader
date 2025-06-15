@@ -85,11 +85,21 @@ public class Afficheur extends JPanel {
                         obj.draw(g);
                 }
 		
-		//affiche les monstres
-		for (ObjetMonstre monstre : m.monstres)
-		{
-			monstre.draw(g);
-		}
+                //affiche les monstres
+                for (ObjetMonstre monstre : m.monstres)
+                {
+                        monstre.draw(g);
+                }
+
+                // affiche les missiles du heros
+                for (ObjetMissile missile : m.missilesHeros) {
+                        missile.draw(g);
+                }
+
+                // affiche les missiles des monstres
+                for (ObjetMissile missile : m.missilesAliens) {
+                        missile.draw(g);
+                }
 
                 // affiche la balle
                 ObjetHeros b = m.balle;
