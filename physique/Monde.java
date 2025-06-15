@@ -108,7 +108,21 @@ public class Monde {
             monstres.get(nbMonstres).px=px;
             monstres.get(nbMonstres).py=py;
             monstres.get(nbMonstres).index=nbMonstres;
-            
+
+            nbMonstres++;
+        }
+
+        /** ajouter un alien
+     * @param px
+     * @param py
+     * @throws java.io.IOException */
+        public void addAlien(int px, int py) throws IOException{
+            ObjetAlien a = new ObjetAlien();
+            monstres.add(a);
+            a.m=this;
+            a.px=px;
+            a.py=py;
+            a.index=nbMonstres;
             nbMonstres++;
         }
         
