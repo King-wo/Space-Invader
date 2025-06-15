@@ -1,13 +1,9 @@
 # MoteurDeJeu
 
-## Documents disponibles
-
-- Documentation sur l'architecture du moteur de jeu : [lien](doc/archiMoteurDeJeu.md)
-- Documentation sur l'utilisation du  moteur de jeu : [lien](doc/MoteurDeJeu.md)
 
 ## Code source
 
-- Le code source se trouve dans le dossier [src](src) avec l'architecture discutée [ici](doc/archiMoteurDeJeu.md)
+- Le code source se trouve directement dans ce dépôt.
 - Il est possible d'ouvrir le dossier à la racine directement dans [Netbeans](https://netbeans.apache.org)
 
 ## Objectif
@@ -24,8 +20,4 @@ git clone https://gitlab.univ-lorraine.fr/villard5/moteurdejeu.git
 
 | Projet | Video |
 | :------------------: | :-------------------: |
-| Space invader  | ![](video/invader.mp4) |
-|  Mario Bros| ![](video/mario.mp4) | 
-| PacMan          |  ![](video/pacman.mp4) |
-| Street Fighter          |  ![](video/streetFighter.mp4) |
-| Snake         |  ![](video/snake.mp4) |
+| Space invader  | ![](invader.mp4) |
